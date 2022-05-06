@@ -1,5 +1,9 @@
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Footer from './components/layout/Footer';
 import Navbar from './components/layout/Navbar';
+import Home from './pages/Home';
+import About from './pages/About';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
@@ -7,7 +11,15 @@ function App() {
       <div className="flex flex-col justify-between h-screen">
         <Navbar />
 
-        <main>Content</main>
+        <main className="container mx-auto px-3 pb-12">
+          <Routes>
+            <Route path="/" element={<Home />}></Route>
+            <Route path="/about" element={<About />}></Route>
+            <Route path="/*" element={<NotFound />}></Route>
+          </Routes>
+        </main>
+
+        <Footer />
       </div>
     </Router>
   );
